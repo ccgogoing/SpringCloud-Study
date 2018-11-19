@@ -1,0 +1,34 @@
+server:
+  port: 8080
+encrypt:
+  key-store:
+    location: classpath:/server.jks
+    password: mytestkey
+    alias: mytestkey
+    secret: changeme
+spring:
+  application:
+    name: microservice-config-server
+  cloud:
+    config:
+      server:
+        git:
+          # ≈‰÷√Git≤÷ø‚µƒµÿ÷∑
+          uri: https://github.com/ccgogoing/spring-cloud-config-repo
+          # Git≤÷ø‚µƒ’À∫≈
+          username: pekxxoo@163.com
+          # Git≤÷ø‚µƒ√‹¬Î
+          password: lc@19940518?
+        health:
+          repositories:
+            a-foo:
+              label: config=label-v2.0
+              name: microservice-foo
+              profiles: dev
+        encrypt:
+          enabled: false
+logging:
+  level:
+    org.springframework.cloud: debug
+    org.springframework.boot: debug
+

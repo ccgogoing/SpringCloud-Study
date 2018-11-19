@@ -1,0 +1,44 @@
+server:
+  port: 8010
+spring:
+  jpa:
+    generate-ddl: false
+    show-sql: true
+    hibernate:
+      ddl-auto: none
+  datasource:
+    platform: h2
+    schema: classpath:schema.sql
+    data: classpath:data.sql
+  application:
+    name: microservice-provider-user
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://user:ccgogoing@localhost:8761/eureka
+  instance:
+    prefer-ip-address: true
+    metadata-map:
+      my-metadata: 我自定义的元数据
+
+managmanagement:
+  health:
+    defaults:
+      enabled: false
+
+info:
+  app:
+    name: @project.artifactId@
+    encoding: @project.build.sourceEncoding@
+    java:
+      source: @java.version@
+      target: @java.version@
+
+
+logging:
+  level:
+    root: info
+    org.hibernate: info
+    org.hibernate.type.descriptor.sql.BasicBinder: trace
+    org.hibernate.type.descriptor.sql.BasicExtractor: trace

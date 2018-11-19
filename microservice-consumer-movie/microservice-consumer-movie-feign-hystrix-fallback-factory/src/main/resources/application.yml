@@ -1,0 +1,25 @@
+server:
+  port: 8020
+
+info:
+  app:
+    name: @project.artifactId@
+    encoding: @project.build.sourceEncoding@
+    java:
+      source: @java.version@
+      target: @java.version@
+spring:
+  application:
+    name: microservice-consumer-movie
+
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://user:ccgogoing@localhost:8761/eureka
+  instance:
+    prefer-ip-address: true
+
+microservice-provider-user:
+  ribbon:
+    NFLoadBalancerRuleClassName: com.netflix.loadbalancer.RandomRule

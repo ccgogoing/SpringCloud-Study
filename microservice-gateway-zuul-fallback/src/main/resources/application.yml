@@ -1,0 +1,68 @@
+server:
+  port: 8040
+spring:
+  application:
+    name: microservice-gateway-zuul
+eureka:
+  client:
+    service-url:
+      defaultZone: http://user:ccgogoing@localhost:8761/eureka
+zuul:
+  routes:
+    user-custom-route:
+      service-id: microservice-file-upload
+      path: /file/**    # service-id对应的路径
+#  ignored-patterns: /**/admin/**  # 忽略所有包含/admin/的路径
+#  routes:
+#    microservice-provider-user: /user/**
+
+#  routes:
+#    microservice-provider-user:
+#      path: /user/**
+#      strip-prefix: false
+
+#  prefix: /api
+#  strip-prefix: true
+#  routes:
+#    microservice-provider-user: /user/**
+
+#  routes:
+#    user-custom-route:
+#      path: /user/**
+#      service-id: microservice-provider-user
+#ribbon:
+#  eureka:
+#    enabled: false   # 为Ribbon禁用Eureka
+#
+#microservice-provider-user:
+#  ribbon:
+#    listOfServers: localhost:8011,localhost:8010
+
+    #该配置方式中，user-custom-route只是给路由一个名称，可以任意起名
+#    user-custom-route:
+#      url: http://localhost:8011/ # 指定的url
+#      path: /user/**  # url对应的路径
+
+
+
+    #该配置方式中，user-custom-route只是给路由一个名称，可以任意起名
+#    user-custom-route:
+#      service-id: microservice-provider-user
+#      path: /user/**    # service-id对应的路径
+
+
+
+#  ignored-services:  '*' # 使用'*' 可忽略掉所有微服务
+#  routes:
+#    microservice-provider-user: /user/**
+
+
+hystrix.command.default.execution.isolation.thread.timeoutInMilliseconds: 60000
+ribbon:
+  ConnectTimeout: 3000
+  ReadTimeout: 60000
+
+logging:
+  level:
+    com.netflix: debug
+
